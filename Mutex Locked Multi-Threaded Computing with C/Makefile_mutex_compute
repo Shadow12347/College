@@ -1,0 +1,17 @@
+CC = gcc
+CFLAGS = -I. -lpthread
+PROGRAM = mutex_compute
+INPUT = integers2.dat
+
+all: mutex_compute.c
+	$(CC) -o $(PROGRAM) mutex_compute.c $(CFLAGS)
+
+run: $(PROGRAM)
+	./$(PROGRAM) < $(INPUT)
+
+clean:
+	rm $(PROGRAM)
+
+debug:
+	gcc -ggdb -lpthread -lm mutex_compute.c
+	gdb a.out
